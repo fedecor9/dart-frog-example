@@ -1,18 +1,27 @@
 import 'package:my_project/models/user.dart';
 import 'package:my_project/sources/in_memory_users_source.dart';
-
-/// In memory users source instance
-final InMemoryUsers inMemoryUsers = InMemoryUsers();
+import 'package:uuid/uuid.dart';
 
 ///
 class UserController {
-  final _users = inMemoryUsers;
+  ///Constructor
+  UserController(this._users);
+
+  final InMemoryUsers _users;
 
   /// Create User from json and save it to in memory source
-  User createUser(Map<String, dynamic> json) {
-    final user = User.fromJson(json);
-    inMemoryUsers.saveUser(user);
-    return user;
+  (Exception?, User?) createUser(Map<String, dynamic> json) {
+    try {
+      if (json['name'] == null) throw Exception('Name is required');
+      if (json['email'] == null) throw Exception('Email is required');
+      final user = User.fromJson(json);
+      _users.saveUser(
+        user.copyWith(id: const Uuid().v4()),
+      );
+      return (null, user);
+    } catch (error) {
+      return (error as Exception, null);
+    }
   }
 
   /// Get all users

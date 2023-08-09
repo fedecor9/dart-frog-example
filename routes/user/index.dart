@@ -4,12 +4,8 @@ import 'package:my_project/controllers/user_controller.dart';
 Future<Response> onRequest(RequestContext context) async {
   switch (context.request.method) {
     case HttpMethod.get:
-
-      ///Get all users
-      return _get();
+      return _get(context);
     case HttpMethod.post:
-
-      /// Create new user
       return _post(context);
     case HttpMethod.put:
       return _put();
@@ -33,8 +29,11 @@ Future<Response> _post(RequestContext context) async {
     return Response(statusCode: 400, body: 'Bad request');
   }
   final body = await context.request.json();
-  final user = UserController().createUser(body as Map<String, dynamic>);
-  return Response(body: user.toJson().toString());
+  final (error, user) =
+      context.read<UserController>().createUser(body as Map<String, dynamic>);
+  if (error == null) return Response(body: user?.toJson().toString());
+  return Response(statusCode: 400, body: error.toString());
 }
 
-Response _get() => Response(body: 'Hello, GET!');
+Response _get(RequestContext context) =>
+    Response.json(body: context.read<UserController>().users);

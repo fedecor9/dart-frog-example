@@ -5,11 +5,14 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
+
+///
 class User with _$User {
   /// Create User
+  @JsonSerializable()
   const factory User({
     required String name,
-    required String id,
+    @JsonKey(defaultValue: '') required String id,
     required String email,
     Map<String, String>? personalData,
   }) = _User;

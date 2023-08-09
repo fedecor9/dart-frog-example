@@ -21,6 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '')
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   Map<String, String>? get personalData => throw _privateConstructorUsedError;
@@ -37,7 +38,7 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String id,
+      @JsonKey(defaultValue: '') String id,
       String email,
       Map<String, String>? personalData});
 }
@@ -89,7 +90,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String id,
+      @JsonKey(defaultValue: '') String id,
       String email,
       Map<String, String>? personalData});
 }
@@ -130,11 +131,12 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
       {required this.name,
-      required this.id,
+      @JsonKey(defaultValue: '') required this.id,
       required this.email,
       final Map<String, String>? personalData})
       : _personalData = personalData;
@@ -144,6 +146,7 @@ class _$_User implements _User {
   @override
   final String name;
   @override
+  @JsonKey(defaultValue: '')
   final String id;
   @override
   final String email;
@@ -196,7 +199,7 @@ class _$_User implements _User {
 abstract class _User implements User {
   const factory _User(
       {required final String name,
-      required final String id,
+      @JsonKey(defaultValue: '') required final String id,
       required final String email,
       final Map<String, String>? personalData}) = _$_User;
 
@@ -205,6 +208,7 @@ abstract class _User implements User {
   @override
   String get name;
   @override
+  @JsonKey(defaultValue: '')
   String get id;
   @override
   String get email;
