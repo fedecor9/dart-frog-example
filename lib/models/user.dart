@@ -9,7 +9,6 @@ part 'user.g.dart';
 ///
 class User with _$User {
   /// Create User
-  @JsonSerializable()
   const factory User({
     required String name,
     @JsonKey(defaultValue: '') required String id,

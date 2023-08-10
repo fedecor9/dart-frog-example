@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:dart_frog/dart_frog.dart';
 import 'package:my_project/controllers/user_controller.dart';
 
-Future<Response> onRequest(RequestContext context) async {
+FutureOr<Response> onRequest(RequestContext context) async {
   switch (context.request.method) {
     case HttpMethod.get:
       return _get(context);
@@ -11,12 +13,8 @@ Future<Response> onRequest(RequestContext context) async {
       return _put();
     case HttpMethod.delete:
       return _delete(context);
-    case HttpMethod.head:
-      return Response(body: 'Hello, HEAD!');
-    case HttpMethod.options:
-      return Response(body: 'Hello, OPTIONS!');
-    case HttpMethod.patch:
-      return Response(body: 'Hello, PATCH!');
+    case _:
+      return Response(statusCode: 405, body: 'Method not allowed');
   }
 }
 
@@ -29,11 +27,10 @@ Future<Response> _post(RequestContext context) async {
     return Response(statusCode: 400, body: 'Bad request');
   }
   final body = await context.request.json();
-  final (error, user) =
+  final user =
       context.read<UserController>().createUser(body as Map<String, dynamic>);
-  if (error == null) return Response(body: user?.toJson().toString());
-  return Response(statusCode: 400, body: error.toString());
+  return Response(body: user?.toJson().toString());
 }
 
-Response _get(RequestContext context) =>
-    Response.json(body: context.read<UserController>().users);
+Future<Response> _get(RequestContext context) async =>
+    Response.json(body: await context.read<UserController>().users);

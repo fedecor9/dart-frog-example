@@ -13,17 +13,13 @@ class UserController {
   final InMemoryUsers _users;
 
   /// Create User from json and save it to in memory source
-  (NetworkError?, User?) createUser(Map<String, dynamic> json) {
-    try {
-      _createUserChecks(json);
-      final user = User.fromJson(json);
-      _users.saveUser(
-        user.copyWith(id: const Uuid().v4()),
-      );
-      return (null, user);
-    } catch (error) {
-      return (error as NetworkError, null);
-    }
+  User? createUser(Map<String, dynamic> json) {
+    _createUserChecks(json);
+    final user = User.fromJson(json);
+    _users.saveUser(
+      user.copyWith(id: const Uuid().v4()),
+    );
+    return user;
   }
 
   void _createUserChecks(Map<String, dynamic> json) {
@@ -42,8 +38,8 @@ class UserController {
   }
 
   /// Get all users
-  List<User> get users => _users.users;
+  Future<List<User>> get users => _users.users;
 
   /// Get user by id
-  User? getUser(String id) => _users.getUser(id);
+  Future<User?> getUser(String id) => _users.getUser(id);
 }

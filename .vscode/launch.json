@@ -2,13 +2,18 @@
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "customTool": "dart_frog dev",
-      "name": "my_project",
-      "request": "launch",
-      "type": "dart",
-    }
-  ]
-}
+  
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch dev server",
+        "request": "attach",
+        "type": "dart",
+        "preLaunchTask": "api: start dev server",
+        "postDebugTask": "api: stop dev server",
+        // Optionally, you can specify other options like the current working directory.
+        "cwd": "${workspaceFolder}"
+      }
+      // Other debug configurations...
+    ]
+  }
