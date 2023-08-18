@@ -15,15 +15,16 @@ class UserController {
   /// Create User from json and save it to in memory source
   User? createUser(Map<String, dynamic> json) {
     _createUserFieldChecks(json);
-    final user = User.fromJson(json);
+    var user = User.fromJson(json);
     if (_users.existsUser(user.email)) {
       throw NetworkError(
         code: HttpStatus.conflict,
         message: 'User already exists',
       );
     }
+    user = user.copyWith(id: const Uuid().v4());
     _users.saveUser(
-      user.copyWith(id: const Uuid().v4()),
+      user,
     );
     return user;
   }
