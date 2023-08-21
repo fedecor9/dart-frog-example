@@ -7,6 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  //This should be in an env file
   url      = "postgresql://db_user:123456@localhost:5432/dart_frog_example?schema=public"
 }
 

@@ -29,7 +29,7 @@ enum SortOrder implements _i1.PrismaEnum {
 
 enum QueryMode implements _i1.PrismaEnum {
   @JsonValue('default')
-  $default(r'default'),
+  $default('default'),
   insensitive;
 
   const QueryMode([this.originalName]);
@@ -136,13 +136,13 @@ class UserOrderByWithAggregationInput implements _i1.JsonSerializable {
 
   final SortOrder? password;
 
-  @JsonKey(name: r'_count')
+  @JsonKey(name: '_count')
   final UserCountOrderByAggregateInput? $count;
 
-  @JsonKey(name: r'_max')
+  @JsonKey(name: '_max')
   final UserMaxOrderByAggregateInput? $max;
 
-  @JsonKey(name: r'_min')
+  @JsonKey(name: '_min')
   final UserMinOrderByAggregateInput? $min;
 
   @override
@@ -163,7 +163,8 @@ class UserScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
   });
 
   factory UserScalarWhereWithAggregatesInput.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$UserScalarWhereWithAggregatesInputFromJson(json);
 
   final Iterable<UserScalarWhereWithAggregatesInput>? AND;
@@ -188,10 +189,10 @@ class UserScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserCreateInput implements _i1.JsonSerializable {
   const UserCreateInput({
-    this.id,
     required this.name,
     required this.email,
     required this.password,
+    this.id,
   });
 
   factory UserCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -212,10 +213,10 @@ class UserCreateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserUncheckedCreateInput implements _i1.JsonSerializable {
   const UserUncheckedCreateInput({
-    this.id,
     required this.name,
     required this.email,
     required this.password,
+    this.id,
   });
 
   factory UserUncheckedCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -284,10 +285,10 @@ class UserUncheckedUpdateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserCreateManyInput implements _i1.JsonSerializable {
   const UserCreateManyInput({
-    this.id,
     required this.name,
     required this.email,
     required this.password,
+    this.id,
   });
 
   factory UserCreateManyInput.fromJson(Map<String, dynamic> json) =>
@@ -375,7 +376,7 @@ class StringFilter implements _i1.JsonSerializable {
 
   final String? equals;
 
-  @JsonKey(name: r'in')
+  @JsonKey(name: 'in')
   final Iterable<String>? $in;
 
   final Iterable<String>? notIn;
@@ -499,7 +500,7 @@ class StringWithAggregatesFilter implements _i1.JsonSerializable {
 
   final String? equals;
 
-  @JsonKey(name: r'in')
+  @JsonKey(name: 'in')
   final Iterable<String>? $in;
 
   final Iterable<String>? notIn;
@@ -522,13 +523,13 @@ class StringWithAggregatesFilter implements _i1.JsonSerializable {
 
   final NestedStringWithAggregatesFilter? not;
 
-  @JsonKey(name: r'_count')
+  @JsonKey(name: '_count')
   final NestedIntFilter? $count;
 
-  @JsonKey(name: r'_min')
+  @JsonKey(name: '_min')
   final NestedStringFilter? $min;
 
-  @JsonKey(name: r'_max')
+  @JsonKey(name: '_max')
   final NestedStringFilter? $max;
 
   @override
@@ -540,7 +541,8 @@ class StringFieldUpdateOperationsInput implements _i1.JsonSerializable {
   const StringFieldUpdateOperationsInput({this.set});
 
   factory StringFieldUpdateOperationsInput.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$StringFieldUpdateOperationsInputFromJson(json);
 
   final String? set;
@@ -571,7 +573,7 @@ class NestedStringFilter implements _i1.JsonSerializable {
 
   final String? equals;
 
-  @JsonKey(name: r'in')
+  @JsonKey(name: 'in')
   final Iterable<String>? $in;
 
   final Iterable<String>? notIn;
@@ -616,12 +618,13 @@ class NestedStringWithAggregatesFilter implements _i1.JsonSerializable {
   });
 
   factory NestedStringWithAggregatesFilter.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$NestedStringWithAggregatesFilterFromJson(json);
 
   final String? equals;
 
-  @JsonKey(name: r'in')
+  @JsonKey(name: 'in')
   final Iterable<String>? $in;
 
   final Iterable<String>? notIn;
@@ -642,13 +645,13 @@ class NestedStringWithAggregatesFilter implements _i1.JsonSerializable {
 
   final NestedStringWithAggregatesFilter? not;
 
-  @JsonKey(name: r'_count')
+  @JsonKey(name: '_count')
   final NestedIntFilter? $count;
 
-  @JsonKey(name: r'_min')
+  @JsonKey(name: '_min')
   final NestedStringFilter? $min;
 
-  @JsonKey(name: r'_max')
+  @JsonKey(name: '_max')
   final NestedStringFilter? $max;
 
   @override
@@ -674,7 +677,7 @@ class NestedIntFilter implements _i1.JsonSerializable {
 
   final int? equals;
 
-  @JsonKey(name: r'in')
+  @JsonKey(name: 'in')
   final Iterable<int>? $in;
 
   final Iterable<int>? notIn;
@@ -727,23 +730,24 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   UserFluent<User?> findUnique({required UserWhereUniqueInput where}) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       )
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'findUniqueUser',
+          'findUniqueUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'findUniqueUser',
+      key: 'findUniqueUser',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) =>
-            json is Map ? User.fromJson(json.cast<String, dynamic>()) : null);
+      (json) =>
+          json is Map ? User.fromJson(json.cast<String, dynamic>()) : null,
+    );
     return UserFluent<User?>(
       future,
       query,
@@ -753,25 +757,27 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   UserFluent<User> findUniqueOrThrow({required UserWhereUniqueInput where}) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       )
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'findUniqueUserOrThrow',
+          'findUniqueUserOrThrow',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'findUniqueUserOrThrow',
+      key: 'findUniqueUserOrThrow',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) => json is Map
-            ? User.fromJson(json.cast<String, dynamic>())
-            : throw Exception(
-                'Not found OutputTypeRefType.string(value: User)'));
+      (json) => json is Map
+          ? User.fromJson(json.cast<String, dynamic>())
+          : throw Exception(
+              'Not found OutputTypeRefType.string(value: User)',
+            ),
+    );
     return UserFluent<User>(
       future,
       query,
@@ -788,43 +794,44 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
       _i2.GraphQLArg(
-        r'orderBy',
+        'orderBy',
         orderBy,
       ),
       _i2.GraphQLArg(
-        r'cursor',
+        'cursor',
         cursor,
       ),
       _i2.GraphQLArg(
-        r'take',
+        'take',
         take,
       ),
       _i2.GraphQLArg(
-        r'skip',
+        'skip',
         skip,
       ),
       _i2.GraphQLArg(
-        r'distinct',
+        'distinct',
         distinct,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'findFirstUser',
+          'findFirstUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'findFirstUser',
+      key: 'findFirstUser',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) =>
-            json is Map ? User.fromJson(json.cast<String, dynamic>()) : null);
+      (json) =>
+          json is Map ? User.fromJson(json.cast<String, dynamic>()) : null,
+    );
     return UserFluent<User?>(
       future,
       query,
@@ -841,45 +848,47 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
       _i2.GraphQLArg(
-        r'orderBy',
+        'orderBy',
         orderBy,
       ),
       _i2.GraphQLArg(
-        r'cursor',
+        'cursor',
         cursor,
       ),
       _i2.GraphQLArg(
-        r'take',
+        'take',
         take,
       ),
       _i2.GraphQLArg(
-        r'skip',
+        'skip',
         skip,
       ),
       _i2.GraphQLArg(
-        r'distinct',
+        'distinct',
         distinct,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'findFirstUserOrThrow',
+          'findFirstUserOrThrow',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'findFirstUserOrThrow',
+      key: 'findFirstUserOrThrow',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) => json is Map
-            ? User.fromJson(json.cast<String, dynamic>())
-            : throw Exception(
-                'Not found OutputTypeRefType.string(value: User)'));
+      (json) => json is Map
+          ? User.fromJson(json.cast<String, dynamic>())
+          : throw Exception(
+              'Not found OutputTypeRefType.string(value: User)',
+            ),
+    );
     return UserFluent<User>(
       future,
       query,
@@ -896,70 +905,74 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
       _i2.GraphQLArg(
-        r'orderBy',
+        'orderBy',
         orderBy,
       ),
       _i2.GraphQLArg(
-        r'cursor',
+        'cursor',
         cursor,
       ),
       _i2.GraphQLArg(
-        r'take',
+        'take',
         take,
       ),
       _i2.GraphQLArg(
-        r'skip',
+        'skip',
         skip,
       ),
       _i2.GraphQLArg(
-        r'distinct',
+        'distinct',
         distinct,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'findManyUser',
+          'findManyUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'findManyUser',
+      key: 'findManyUser',
     );
     final fields = UserScalarFieldEnum.values.toGraphQLFields();
-    compiler(Iterable<Map> findManyUser) => findManyUser
+    Iterable<User> compiler(Iterable<Map> findManyUser) => findManyUser
         .map((Map findManyUser) => User.fromJson(findManyUser.cast()));
-    return query(fields).then((json) => json is Iterable
-        ? compiler(json.cast())
-        : throw Exception('Unable to parse response'));
+    return query(fields).then(
+      (json) => json is Iterable
+          ? compiler(json.cast())
+          : throw Exception('Unable to parse response'),
+    );
   }
 
   UserFluent<User> create({required UserCreateInput data}) {
     final args = [
       _i2.GraphQLArg(
-        r'data',
+        'data',
         data,
       )
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'createOneUser',
+          'createOneUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'createOneUser',
+      key: 'createOneUser',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) => json is Map
-            ? User.fromJson(json.cast<String, dynamic>())
-            : throw Exception(
-                'Not found OutputTypeRefType.string(value: User)'));
+      (json) => json is Map
+          ? User.fromJson(json.cast<String, dynamic>())
+          : throw Exception(
+              'Not found OutputTypeRefType.string(value: User)',
+            ),
+    );
     return UserFluent<User>(
       future,
       query,
@@ -972,30 +985,32 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'data',
+        'data',
         data,
       ),
       _i2.GraphQLArg(
-        r'skipDuplicates',
+        'skipDuplicates',
         skipDuplicates,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'createManyUser',
+          'createManyUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'createManyUser',
+      key: 'createManyUser',
     );
-    final fields = const ['count'].map((e) => _i2.GraphQLField(e));
-    compiler(Map createManyUser) =>
+    final fields = const ['count'].map(_i2.GraphQLField.new);
+    AffectedRowsOutput compiler(Map createManyUser) =>
         AffectedRowsOutput.fromJson(createManyUser.cast());
-    return query(fields).then((json) => json is Map
-        ? compiler(json)
-        : throw Exception('Unable to parse response'));
+    return query(fields).then(
+      (json) => json is Map
+          ? compiler(json)
+          : throw Exception('Unable to parse response'),
+    );
   }
 
   UserFluent<User?> update({
@@ -1004,27 +1019,28 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'data',
+        'data',
         data,
       ),
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'updateOneUser',
+          'updateOneUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'updateOneUser',
+      key: 'updateOneUser',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) =>
-            json is Map ? User.fromJson(json.cast<String, dynamic>()) : null);
+      (json) =>
+          json is Map ? User.fromJson(json.cast<String, dynamic>()) : null,
+    );
     return UserFluent<User?>(
       future,
       query,
@@ -1037,30 +1053,32 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'data',
+        'data',
         data,
       ),
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'updateManyUser',
+          'updateManyUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'updateManyUser',
+      key: 'updateManyUser',
     );
-    final fields = const ['count'].map((e) => _i2.GraphQLField(e));
-    compiler(Map updateManyUser) =>
+    final fields = const ['count'].map(_i2.GraphQLField.new);
+    AffectedRowsOutput compiler(Map updateManyUser) =>
         AffectedRowsOutput.fromJson(updateManyUser.cast());
-    return query(fields).then((json) => json is Map
-        ? compiler(json)
-        : throw Exception('Unable to parse response'));
+    return query(fields).then(
+      (json) => json is Map
+          ? compiler(json)
+          : throw Exception('Unable to parse response'),
+    );
   }
 
   UserFluent<User> upsert({
@@ -1070,33 +1088,35 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
       _i2.GraphQLArg(
-        r'create',
+        'create',
         create,
       ),
       _i2.GraphQLArg(
-        r'update',
+        'update',
         update,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'upsertOneUser',
+          'upsertOneUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'upsertOneUser',
+      key: 'upsertOneUser',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) => json is Map
-            ? User.fromJson(json.cast<String, dynamic>())
-            : throw Exception(
-                'Not found OutputTypeRefType.string(value: User)'));
+      (json) => json is Map
+          ? User.fromJson(json.cast<String, dynamic>())
+          : throw Exception(
+              'Not found OutputTypeRefType.string(value: User)',
+            ),
+    );
     return UserFluent<User>(
       future,
       query,
@@ -1106,23 +1126,24 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   UserFluent<User?> delete({required UserWhereUniqueInput where}) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       )
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'deleteOneUser',
+          'deleteOneUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'deleteOneUser',
+      key: 'deleteOneUser',
     );
     final future = query(UserScalarFieldEnum.values.toGraphQLFields()).then(
-        (json) =>
-            json is Map ? User.fromJson(json.cast<String, dynamic>()) : null);
+      (json) =>
+          json is Map ? User.fromJson(json.cast<String, dynamic>()) : null,
+    );
     return UserFluent<User?>(
       future,
       query,
@@ -1132,26 +1153,28 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   Future<AffectedRowsOutput> deleteMany({UserWhereInput? where}) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       )
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $mutation([
         _i2.GraphQLField(
-          r'deleteManyUser',
+          'deleteManyUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'deleteManyUser',
+      key: 'deleteManyUser',
     );
-    final fields = const ['count'].map((e) => _i2.GraphQLField(e));
-    compiler(Map deleteManyUser) =>
+    final fields = const ['count'].map(_i2.GraphQLField.new);
+    AffectedRowsOutput compiler(Map deleteManyUser) =>
         AffectedRowsOutput.fromJson(deleteManyUser.cast());
-    return query(fields).then((json) => json is Map
-        ? compiler(json)
-        : throw Exception('Unable to parse response'));
+    return query(fields).then(
+      (json) => json is Map
+          ? compiler(json)
+          : throw Exception('Unable to parse response'),
+    );
   }
 
   AggregateUser aggregate({
@@ -1163,89 +1186,94 @@ extension UserModelDelegateExtension on _i1.ModelDelegate<User> {
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
       _i2.GraphQLArg(
-        r'orderBy',
+        'orderBy',
         orderBy,
       ),
       _i2.GraphQLArg(
-        r'cursor',
+        'cursor',
         cursor,
       ),
       _i2.GraphQLArg(
-        r'take',
+        'take',
         take,
       ),
       _i2.GraphQLArg(
-        r'skip',
+        'skip',
         skip,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'aggregateUser',
+          'aggregateUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'aggregateUser',
+      key: 'aggregateUser',
     );
     return AggregateUser(query);
   }
 
   Future<Iterable<UserGroupByOutputType>> groupBy({
+    required Iterable<UserScalarFieldEnum> by,
     UserWhereInput? where,
     Iterable<UserOrderByWithAggregationInput>? orderBy,
-    required Iterable<UserScalarFieldEnum> by,
     UserScalarWhereWithAggregatesInput? having,
     int? take,
     int? skip,
   }) {
     final args = [
       _i2.GraphQLArg(
-        r'where',
+        'where',
         where,
       ),
       _i2.GraphQLArg(
-        r'orderBy',
+        'orderBy',
         orderBy,
       ),
       _i2.GraphQLArg(
-        r'by',
+        'by',
         by,
       ),
       _i2.GraphQLArg(
-        r'having',
+        'having',
         having,
       ),
       _i2.GraphQLArg(
-        r'take',
+        'take',
         take,
       ),
       _i2.GraphQLArg(
-        r'skip',
+        'skip',
         skip,
       ),
     ];
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'groupByUser',
+          'groupByUser',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'groupByUser',
+      key: 'groupByUser',
     );
     final fields = by.map((e) => _i2.GraphQLField(e.originalName ?? e.name));
-    compiler(Iterable<Map> groupByUser) => groupByUser.map((Map groupByUser) =>
-        UserGroupByOutputType.fromJson(groupByUser.cast()));
-    return query(fields).then((json) => json is Iterable
-        ? compiler(json.cast())
-        : throw Exception('Unable to parse response'));
+    Iterable<UserGroupByOutputType> compiler(Iterable<Map> groupByUser) =>
+        groupByUser.map(
+          (Map groupByUser) =>
+              UserGroupByOutputType.fromJson(groupByUser.cast()),
+        );
+    return query(fields).then(
+      (json) => json is Iterable
+          ? compiler(json.cast())
+          : throw Exception('Unable to parse response'),
+    );
   }
 }
 
@@ -1295,11 +1323,11 @@ class AggregateUser {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'_count',
+          '_count',
           fields: fields,
         )
       ]),
-      key: r'_count',
+      key: '_count',
     );
     return UserCountAggregateOutputType(query);
   }
@@ -1308,11 +1336,11 @@ class AggregateUser {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'_min',
+          '_min',
           fields: fields,
         )
       ]),
-      key: r'_min',
+      key: '_min',
     );
     return UserMinAggregateOutputType(query);
   }
@@ -1321,11 +1349,11 @@ class AggregateUser {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'_max',
+          '_max',
           fields: fields,
         )
       ]),
-      key: r'_max',
+      key: '_max',
     );
     return UserMaxAggregateOutputType(query);
   }
@@ -1340,65 +1368,65 @@ class UserCountAggregateOutputType {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'id',
+          'id',
           fields: fields,
         )
       ]),
-      key: r'id',
+      key: 'id',
     );
-    return query(const []).then((value) => (value as int));
+    return query(const []).then((value) => value as int);
   }
 
   Future<int> name() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'name',
+          'name',
           fields: fields,
         )
       ]),
-      key: r'name',
+      key: 'name',
     );
-    return query(const []).then((value) => (value as int));
+    return query(const []).then((value) => value as int);
   }
 
   Future<int> email() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'email',
+          'email',
           fields: fields,
         )
       ]),
-      key: r'email',
+      key: 'email',
     );
-    return query(const []).then((value) => (value as int));
+    return query(const []).then((value) => value as int);
   }
 
   Future<int> password() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'password',
+          'password',
           fields: fields,
         )
       ]),
-      key: r'password',
+      key: 'password',
     );
-    return query(const []).then((value) => (value as int));
+    return query(const []).then((value) => value as int);
   }
 
   Future<int> $all() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'_all',
+          '_all',
           fields: fields,
         )
       ]),
-      key: r'_all',
+      key: '_all',
     );
-    return query(const []).then((value) => (value as int));
+    return query(const []).then((value) => value as int);
   }
 }
 
@@ -1411,52 +1439,52 @@ class UserMinAggregateOutputType {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'id',
+          'id',
           fields: fields,
         )
       ]),
-      key: r'id',
+      key: 'id',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 
   Future<String?> name() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'name',
+          'name',
           fields: fields,
         )
       ]),
-      key: r'name',
+      key: 'name',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 
   Future<String?> email() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'email',
+          'email',
           fields: fields,
         )
       ]),
-      key: r'email',
+      key: 'email',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 
   Future<String?> password() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'password',
+          'password',
           fields: fields,
         )
       ]),
-      key: r'password',
+      key: 'password',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 }
 
@@ -1469,52 +1497,52 @@ class UserMaxAggregateOutputType {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'id',
+          'id',
           fields: fields,
         )
       ]),
-      key: r'id',
+      key: 'id',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 
   Future<String?> name() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'name',
+          'name',
           fields: fields,
         )
       ]),
-      key: r'name',
+      key: 'name',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 
   Future<String?> email() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'email',
+          'email',
           fields: fields,
         )
       ]),
-      key: r'email',
+      key: 'email',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 
   Future<String?> password() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'password',
+          'password',
           fields: fields,
         )
       ]),
-      key: r'password',
+      key: 'password',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => value as String?);
   }
 }
 
@@ -1524,9 +1552,11 @@ class UserMaxAggregateOutputType {
   includeIfNull: false,
 )
 class Datasources implements _i1.JsonSerializable {
-  const Datasources(
-      {this.db =
-          r'postgresql://db_user:123456@localhost:5432/dart_frog_example?schema=public'});
+  const Datasources({
+    this.db =
+        //This should be in an env file
+        'postgresql://db_user:123456@localhost:5432/dart_frog_example?schema=public',
+  });
 
   final String? db;
 
@@ -1535,19 +1565,6 @@ class Datasources implements _i1.JsonSerializable {
 }
 
 class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
-  PrismaClient._internal(
-    _i3.Engine engine, {
-    _i3.QueryEngineRequestHeaders? headers,
-    _i3.TransactionInfo? transaction,
-  })  : _engine = engine,
-        _headers = headers,
-        _transaction = transaction,
-        super(
-          engine,
-          headers: headers,
-          transaction: transaction,
-        );
-
   factory PrismaClient({
     Datasources? datasources,
     Iterable<_i4.Event>? stdout,
@@ -1567,6 +1584,13 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
     );
     return PrismaClient._internal(engine);
   }
+  PrismaClient._internal(
+    super.engine, {
+    super.headers,
+    super.transaction,
+  })  : _engine = engine,
+        _headers = headers,
+        _transaction = transaction;
 
   final _i3.Engine _engine;
 
