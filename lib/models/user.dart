@@ -13,7 +13,7 @@ class User with _$User {
     required String name,
     @JsonKey(defaultValue: '') required String id,
     required String email,
-    Map<String, String>? personalData,
+    required String password,
   }) = _User;
 
   /// Create User from Json

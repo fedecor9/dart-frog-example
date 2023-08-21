@@ -27,8 +27,9 @@ Future<Response> _post(RequestContext context) async {
     return Response(statusCode: 400, body: 'Bad request');
   }
   final body = await context.request.json();
-  final user =
-      context.read<UserController>().createUser(body as Map<String, dynamic>);
+  final user = await context
+      .read<UserController>()
+      .createUser(body as Map<String, dynamic>);
   return Response(body: user?.toJson().toString());
 }
 

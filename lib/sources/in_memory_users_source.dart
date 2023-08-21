@@ -20,7 +20,7 @@ class InMemoryUsers implements IUsersDataSource {
       _data[identifier];
 
   @override
-  void saveUser(User user) {
+  Future<void> saveUser(User user) async {
     _data[user.id] = user;
   }
 
@@ -30,7 +30,8 @@ class InMemoryUsers implements IUsersDataSource {
   }
 
   @override
-  bool existsUser(String identifier) =>
-      _data.containsKey(identifier) ||
-      _data.values.any((user) => user.email == identifier);
+  Future<bool> existsUser(String identifier) => Future.value(
+        _data.containsKey(identifier) ||
+            _data.values.any((user) => user.email == identifier),
+      );
 }
