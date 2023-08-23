@@ -6,9 +6,9 @@ abstract interface class IUsersDataSource {
 
   Future<bool> existsUser(String identifier);
 
-  Future<List<User>> get users;
+  Future<List<UserResponse>> get users;
 
-  Future<void> saveUser(User user);
+  Future<User> saveUser(UserRequest user);
 
   Future<void> deleteUser(String id);
 }

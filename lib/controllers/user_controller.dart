@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:my_project/interfaces/users_data_source.dart';
 import 'package:my_project/models/network_error.dart';
 import 'package:my_project/models/user.dart';
-import 'package:uuid/uuid.dart';
 
 ///
 class UserController {
@@ -15,18 +14,16 @@ class UserController {
   /// Create User from json and save it to in memory source
   Future<User>? createUser(Map<String, dynamic> json) async {
     _createUserFieldChecks(json);
-    var user = User.fromJson(json);
+    final user = UserRequest.fromJson(json);
     if (await _users.existsUser(user.email)) {
       throw NetworkError(
         code: HttpStatus.conflict,
         message: 'User already exists',
       );
     }
-    user = user.copyWith(id: const Uuid().v4());
-    await _users.saveUser(
+    return _users.saveUser(
       user,
     );
-    return user;
   }
 
   void _createUserFieldChecks(Map<String, dynamic> json) {
@@ -45,7 +42,7 @@ class UserController {
   }
 
   /// Get all users
-  Future<List<User>> get users => _users.users;
+  Future<List<UserResponse>> get users => _users.users;
 
   /// Get user by identifier
   Future<User?> getUser(String identifier) async {

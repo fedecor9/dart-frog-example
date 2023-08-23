@@ -1,5 +1,6 @@
 import 'package:my_project/interfaces/users_data_source.dart';
 import 'package:my_project/models/user.dart';
+import 'package:uuid/uuid.dart';
 
 ///
 class InMemoryUsers implements IUsersDataSource {
@@ -11,17 +12,27 @@ class InMemoryUsers implements IUsersDataSource {
   static final InMemoryUsers _instance = InMemoryUsers._();
 
   @override
-  Future<List<User>> get users async => _data.values.toList();
+  Future<List<UserResponse>> get users async =>
+      _data.values.map((e) => UserResponse.fromJson(e.toJson())).toList();
 
   @override
-  Future<User?> getUser(
+  Future<UserResponse?> getUser(
     String identifier,
   ) async =>
-      _data[identifier];
+      _data[identifier] != null
+          ? UserResponse.fromJson(_data[identifier]!.toJson())
+          : null;
 
   @override
-  Future<void> saveUser(User user) async {
-    _data[user.id] = user;
+  Future<User> saveUser(UserRequest user) async {
+    final newUser = BaseUser(
+      name: user.name!,
+      id: const Uuid().v4(),
+      email: user.email,
+      password: user.password,
+    );
+    _data[newUser.id] = newUser;
+    return newUser;
   }
 
   @override
