@@ -4,11 +4,11 @@ import 'package:my_project/models/user.dart';
 abstract interface class IUsersDataSource {
   Future<User?> getUser(String identifier);
 
-  bool existsUser(String identifier);
+  Future<bool> existsUser(String identifier);
 
   Future<List<User>> get users;
 
-  void saveUser(User user);
+  Future<void> saveUser(User user);
 
-  void deleteUser(String id);
+  Future<void> deleteUser(String id);
 }

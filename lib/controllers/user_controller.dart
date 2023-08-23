@@ -13,17 +13,17 @@ class UserController {
   final IUsersDataSource _users;
 
   /// Create User from json and save it to in memory source
-  User? createUser(Map<String, dynamic> json) {
+  Future<User>? createUser(Map<String, dynamic> json) async {
     _createUserFieldChecks(json);
     var user = User.fromJson(json);
-    if (_users.existsUser(user.email)) {
+    if (await _users.existsUser(user.email)) {
       throw NetworkError(
         code: HttpStatus.conflict,
         message: 'User already exists',
       );
     }
     user = user.copyWith(id: const Uuid().v4());
-    _users.saveUser(
+    await _users.saveUser(
       user,
     );
     return user;
@@ -49,7 +49,7 @@ class UserController {
 
   /// Get user by identifier
   Future<User?> getUser(String identifier) async {
-    if (!_users.existsUser(identifier)) {
+    if (!await _users.existsUser(identifier)) {
       throw NetworkError(
         code: HttpStatus.notFound,
         message: 'User not found',
